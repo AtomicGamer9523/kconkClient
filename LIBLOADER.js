@@ -92,26 +92,27 @@ const loadJSLIB = (()=>{
     */
     const external_function = (path, blocking = true) => {
         console.trace(`Loading JSLIB: '${path}'`);
-        var e="";
+        blocking = blocking === undefined ? true : blocking;
+        var __e__="";
         try{
-            var r=new XMLHttpRequest();
-            r.onreadystatechange=function(){
-                if(r.readyState==4){
-                    if(r.status==200){
-                        e=r.responseText
+            var __r__=new XMLHttpRequest();
+            __r__.onreadystatechange=function(){
+                if(__r__.readyState==4){
+                    if(__r__.status==200){
+                        __e__=__r__.responseText
                     }else{
-                        console.error(`Error Loading Library '${path}', Server returned status code ${r.status}`);
-                        e="";
+                        console.error(`Error Loading Library '${path}', Server returned status code ${__r__.status}`);
+                        __e__="";
                     }
                 }
             };
-            r.open("GET",p,!blocking);
-            r.send();
-        }catch(f){
-            console.error("Error loading "+p);
-            console.error(f);
+            __r__.open("GET",path,!blocking);
+            __r__.send();
+        }catch(__f__){
+            console.error("Error loading "+path);
+            console.error(__f__);
         }finally{
-            return new JSLib(e);
+            return new JSLib(__e__);
         }
     };
     return external_function;
