@@ -115,4 +115,4 @@ const loadJSLIB = (()=>{
         }
     };
     return external_function;
-})();
+})();window.loadJSLIB=loadJSLIB;
