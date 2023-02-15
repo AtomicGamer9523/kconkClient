@@ -91,7 +91,6 @@ const loadJSLIB = (()=>{
      * @returns {JSLib} JSLib
     */
     const external_function = (path, blocking = true) => {
-        console.trace(`Loading JSLIB: '${path}'`);
         blocking = blocking === undefined ? true : blocking;
         var __e__="";
         try{
